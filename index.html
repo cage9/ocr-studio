@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OCR Training & Testing App</title>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>OCR Training & Testing</h1>
+    <p>Train a neural network to recognize handwritten characters</p>
+  </header>
+
+  <div class="tabs">
+    <button id="trainTab" class="tab active">Train</button>
+    <button id="testTab" class="tab">Test</button>
+    <button id="dataTab" class="tab">Data Management</button>
+  </div>
+
+  <div id="trainSection" class="section active">
+    <h2>Training Mode</h2>
+    <div class="canvas-container">
+      <canvas id="trainCanvas" width="280" height="280"></canvas>
+      <div class="canvas-tools">
+        <button id="clearTrainCanvas">Clear</button>
+        <div class="character-input">
+          <label for="charInput">Character: </label>
+          <input type="text" id="charInput" maxlength="1" />
+        </div>
+        <button id="addSample">Add Sample</button>
+      </div>
+    </div>
+    <div class="training-controls">
+      <h3>Training Status</h3>
+      <div id="sampleCounter">Samples: 0</div>
+      <div class="char-distribution" id="charDistribution"></div>
+      <button id="startTraining">Start Training</button>
+      <div id="trainingStatus"></div>
+      <div class="progress-container">
+        <div id="trainingProgress" class="progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="testSection" class="section">
+    <h2>Testing Mode</h2>
+    <div class="canvas-container">
+      <canvas id="testCanvas" width="280" height="280"></canvas>
+      <div class="canvas-tools">
+        <button id="clearTestCanvas">Clear</button>
+        <button id="recognize">Recognize Character</button>
+      </div>
+    </div>
+    <div class="results-container">
+      <h3>Recognition Results</h3>
+      <div id="recognitionResult" class="recognition-result">
+        Draw a character and click "Recognize Character"
+      </div>
+      <div id="confidenceDisplay"></div>
+    </div>
+  </div>
+
+  <div id="dataSection" class="section">
+    <h2>Data Management</h2>
+    <div class="data-controls">
+      <div class="model-management">
+        <h3>Model Management</h3>
+        <button id="saveModel">Save Current Model</button>
+        <div class="file-input">
+          <label for="loadModel">Load Model: </label>
+          <input type="file" id="loadModel" accept=".json" />
+        </div>
+      </div>
+      <div class="training-data-management">
+        <h3>Training Data Management</h3>
+        <button id="saveTrainingData">Save Training Data</button>
+        <div class="file-input">
+          <label for="loadTrainingData">Load Training Data: </label>
+          <input type="file" id="loadTrainingData" accept=".json" />
+        </div>
+        <button id="clearAllData">Clear All Data</button>
+      </div>
+    </div>
+    <div class="data-visualization">
+      <h3>Data Visualization</h3>
+      <div class="samples-grid" id="samplesGrid"></div>
+    </div>
+  </div>
+</div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>
