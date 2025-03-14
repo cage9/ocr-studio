@@ -190,7 +190,7 @@ function findBoundingBox(imageData: ImageData): { left: number, top: number, rig
 }
 
 // Convert normal-sized image to tiny for display
-export function createThumbnail(imageData: number[], character: string): HTMLCanvasElement {
+export function createThumbnail(imageData: number[]): HTMLCanvasElement {
   const thumbnailCanvas = document.createElement('canvas');
   thumbnailCanvas.width = NORMALIZE_SIZE;
   thumbnailCanvas.height = NORMALIZE_SIZE;

@@ -8,11 +8,13 @@ import {
 } from './models';
 
 export class OCRService {
+  // @ts-ignore
   private network: brain.NeuralNetwork;
   private characters = new Set<string>();
   private trainingSamples: TrainingSample[] = [];
   private options: NetworkOptions;
   private trainingStatus: 'idle' | 'training' | 'trained' = 'idle';
+  // @ts-ignore
   private trainingProgress = 0;
   private onProgressCallback: ((progress: number) => void) | null = null;
 
@@ -139,7 +141,7 @@ export class OCRService {
           errorThresh: this.options.errorThresh,
           log: true,
           logPeriod: 10,
-          callback: (data) => {
+          callback: (data: any) => {
             const progress = data.iterations / this.options.iterations;
             this.trainingProgress = progress;
             if (this.onProgressCallback) {

@@ -9,9 +9,9 @@ import { TrainingSample, RecognitionResult } from './models';
 const ocrService = new OCRService();
 
 // Set up canvas elements
-const { canvas: trainCanvas, ctx: trainCtx, clearCanvas: clearTrainCanvas } =
+const { canvas: trainCanvas, clearCanvas: clearTrainCanvas } =
   setupCanvas('trainCanvas');
-const { canvas: testCanvas, ctx: testCtx, clearCanvas: clearTestCanvas } =
+const { canvas: testCanvas, clearCanvas: clearTestCanvas } =
   setupCanvas('testCanvas');
 
 // Get UI elements
@@ -168,6 +168,7 @@ async function startTraining() {
     testTab.click(); // Switch to test tab when training is complete
   } catch (error) {
     console.error('Training error:', error);
+    // @ts-ignore
     trainingStatus.textContent = `Training error: ${error.message}`;
   } finally {
     startTrainingBtn.disabled = false;
@@ -336,6 +337,7 @@ function loadTrainingData(event: Event) {
       // Reset the input
       input.value = '';
     } catch (error) {
+      // @ts-ignore
       alert(`Error loading training data: ${error.message}`);
     }
   };
@@ -365,7 +367,7 @@ function updateSamplesGrid() {
     sampleItem.className = 'sample-item';
 
     // Create thumbnail canvas
-    const thumbnail = createThumbnail(sample.imageData, sample.label);
+    const thumbnail = createThumbnail(sample.imageData);
 
     // Add label
     const label = document.createElement('div');
